@@ -1,7 +1,8 @@
 
 del bin\release\MissionPlannerBeta.zip
 
-"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe" MissionPlanner.sln /m /p:Configuration=Release /verbosity:d
+"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe" MissionPlanner.sln /p:Configuration=Release 
+rem /m /verbosity:d
 
 echo create appx?
 pause
