@@ -32,6 +32,7 @@
             this.tabQuick = new System.Windows.Forms.TabPage();
             this.tableLayoutPanelQuick = new System.Windows.Forms.TableLayoutPanel();
             this.tabActions = new System.Windows.Forms.TabPage();
+            this.BUT_land = new MissionPlanner.Controls.MyButton();
             this.BUT_engine_ON = new MissionPlanner.Controls.MyButton();
             this.BUT_engine_OFF = new MissionPlanner.Controls.MyButton();
             this.modifyandSetLoiterRad = new MissionPlanner.Controls.ModifyandSet();
@@ -172,7 +173,6 @@
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Messagetabtimer = new System.Windows.Forms.Timer(this.components);
             this.bindingSourceStatusTab = new System.Windows.Forms.BindingSource(this.components);
-            this.BUT_land = new MissionPlanner.Controls.MyButton();
             ((System.ComponentModel.ISupportInitialize)(this.MainH)).BeginInit();
             this.MainH.Panel1.SuspendLayout();
             this.MainH.Panel2.SuspendLayout();
@@ -525,6 +525,16 @@
             resources.ApplyResources(this.tabActions, "tabActions");
             this.tabActions.Name = "tabActions";
             this.tabActions.UseVisualStyleBackColor = true;
+            // 
+            // BUT_land
+            // 
+            this.BUT_land.ColorMouseDown = System.Drawing.Color.Empty;
+            this.BUT_land.ColorMouseOver = System.Drawing.Color.Empty;
+            this.BUT_land.ColorNotEnabled = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.BUT_land, "BUT_land");
+            this.BUT_land.Name = "BUT_land";
+            this.BUT_land.UseVisualStyleBackColor = true;
+            this.BUT_land.Click += new System.EventHandler(this.BUT_land_Click);
             // 
             // BUT_engine_ON
             // 
@@ -2004,7 +2014,7 @@
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 180D;
+            this.windDir1.Direction = 360D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2215,16 +2225,6 @@
             // bindingSourceStatusTab
             // 
             this.bindingSourceStatusTab.DataSource = typeof(MissionPlanner.CurrentState);
-            // 
-            // BUT_land
-            // 
-            this.BUT_land.ColorMouseDown = System.Drawing.Color.Empty;
-            this.BUT_land.ColorMouseOver = System.Drawing.Color.Empty;
-            this.BUT_land.ColorNotEnabled = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.BUT_land, "BUT_land");
-            this.BUT_land.Name = "BUT_land";
-            this.BUT_land.UseVisualStyleBackColor = true;
-            this.BUT_land.Click += new System.EventHandler(this.BUT_land_Click);
             // 
             // FlightData
             // 
