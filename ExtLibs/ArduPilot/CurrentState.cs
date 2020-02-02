@@ -251,6 +251,40 @@ namespace MissionPlanner
         [DisplayText("AOA (deg)")]
         public float AOA { get; set; }
 
+        [DisplayText("Charge current (amps)")]
+        [GroupText("Generator")]
+        public float charge_current { get; set; }
+        [DisplayText("Genset RPM")]
+        [GroupText("Generator")]
+        public uint gen_rpm { get; set; }
+        [DisplayText("ICE temperature")]
+        [GroupText("Generator")]
+        public float ice_temp { get; set; }
+        [DisplayText("Gen temperature")]
+        [GroupText("Generator")]
+        public float gen_temp { get; set; }
+        [DisplayText("VSI temperature")]
+        [GroupText("Generator")]
+        public float vsi_temp { get; set; }
+        [DisplayText("Fuel level")]
+        [GroupText("Generator")]
+        public uint fuel { get; set; }
+        [DisplayText("Cooler")]
+        [GroupText("Generator")]
+        public uint cooler_pct { get; set; }
+        [DisplayText("Starter")]
+        [GroupText("Generator")]
+        public uint starter_pct { get; set; }
+        [DisplayText("Throttle")]
+        [GroupText("Generator")]
+        public uint throttle_pct { get; set; }
+        [DisplayText("RPM alternate")]
+        [GroupText("Generator")]
+        public uint gen_rpm_alt { get; set; }
+        [DisplayText("ICE temperature alternate")]
+        [GroupText("Generator")]
+        public float ice_temp_alt { get; set; }
+
         [GroupText("Position")]
         [DisplayText("GroundCourse (deg)")]
         public float groundcourse
@@ -1909,7 +1943,10 @@ namespace MissionPlanner
 
         private void Parent_OnPacketReceived(object sender, MAVLink.MAVLinkMessage mavLinkMessage)
         {
-            if (mavLinkMessage.sysid == parent.sysid && mavLinkMessage.compid == parent.compid
+            if (mavLinkMessage.sysid == parent.sysid && (mavLinkMessage.compid == parent.compid || 
+                    mavLinkMessage.msgid == (uint)MAVLink.MAVLINK_MSG_ID.GEN_STATUS || 
+                    mavLinkMessage.msgid == (uint)MAVLink.MAVLINK_MSG_ID.GENERATOR_STATUS || 
+                    mavLinkMessage.msgid == (uint)MAVLink.MAVLINK_MSG_ID.EFI_STATUS)
                 || mavLinkMessage.msgid == (uint)MAVLink.MAVLINK_MSG_ID.RADIO // propagate the RADIO/RADIO_STATUS message across all devices on this link
                 || mavLinkMessage.msgid == (uint)MAVLink.MAVLINK_MSG_ID.RADIO_STATUS)
             {
@@ -2044,6 +2081,8 @@ namespace MissionPlanner
                             gen_voltage = gen.bus_voltage;
                             gen_runtime = gen.runtime;
                             gen_maint_time = gen.time_until_maintenance;
+                            gen_temp = gen.generator_temperature;
+                            vsi_temp = gen.rectifier_temperature;
                         }
                         break;
                     case (uint)MAVLink.MAVLINK_MSG_ID.HIGH_LATENCY:
@@ -2407,6 +2446,7 @@ namespace MissionPlanner
                                 efi_rpm = efi.rpm;
                                 efi_fuelflow = efi.fuel_flow;
                                 efi_fuelconsumed = efi.fuel_consumed;
+                                throttle_pct = (uint)Math.Round(efi.throttle_out);
                             }
                         }
                         break;
@@ -3485,6 +3525,24 @@ namespace MissionPlanner
                             xpdr_flight_id = status.flight_id;
 
                             xpdr_status_pending = true;
+                        }
+                        break;
+
+                    case (uint) MAVLink.MAVLINK_MSG_ID.GEN_STATUS:
+                        {
+                            var gen_status = mavLinkMessage.ToStructure<MAVLink.mavlink_gen_status_t>();
+
+                            charge_current = gen_status.charge_current;
+                            gen_rpm = gen_status.rpm;
+                            ice_temp = gen_status.ice_temp;
+                            gen_temp = gen_status.gen_temp;
+                            vsi_temp = gen_status.vsi_temp;
+                            fuel = gen_status.fuel_remaining;
+                            cooler_pct = gen_status.cooler;
+                            starter_pct = gen_status.starter;
+                            throttle_pct = gen_status.throttle;
+                            gen_rpm_alt = gen_status.rpm_alt;
+                            ice_temp_alt = gen_status.ice_temp_alt;
                         }
                         break;
                 }
