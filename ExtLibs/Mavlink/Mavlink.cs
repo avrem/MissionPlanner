@@ -210,6 +210,7 @@ public partial class MAVLink
         new message_info(233, "GPS_RTCM_DATA", 35, 182, 182, typeof( mavlink_gps_rtcm_data_t )),
         new message_info(234, "HIGH_LATENCY", 150, 40, 40, typeof( mavlink_high_latency_t )),
         new message_info(235, "HIGH_LATENCY2", 179, 42, 42, typeof( mavlink_high_latency2_t )),
+        new message_info(240, "GEN_STATUS", 255, 20, 32, typeof( mavlink_gen_status_t )),
         new message_info(241, "VIBRATION", 90, 32, 32, typeof( mavlink_vibration_t )),
         new message_info(242, "HOME_POSITION", 104, 52, 60, typeof( mavlink_home_position_t )),
         new message_info(243, "SET_HOME_POSITION", 85, 53, 61, typeof( mavlink_set_home_position_t )),
@@ -535,6 +536,7 @@ public partial class MAVLink
         GPS_RTCM_DATA = 233,
         HIGH_LATENCY = 234,
         HIGH_LATENCY2 = 235,
+        GEN_STATUS = 240,
         VIBRATION = 241,
         HOME_POSITION = 242,
         SET_HOME_POSITION = 243,
@@ -23836,6 +23838,117 @@ public partial class MAVLink
         [Description("Field for custom payload.")]
         //[FieldOffset(41)]
         public  sbyte custom2;
+    };
+
+    
+    /// extensions_start 8
+    [StructLayout(LayoutKind.Sequential,Pack=1,Size=32)]
+    ///<summary> Generator telemetry data </summary>
+    public struct mavlink_gen_status_t
+    {
+        /// packet ordered constructor
+        public mavlink_gen_status_t(float charge_current,uint rpm,float ice_temp,float gen_temp,byte fuel_remaining,byte cooler,byte starter,byte throttle,float vsi_temp,uint rpm_alt,float ice_temp_alt) 
+        {
+            this.charge_current = charge_current;
+            this.rpm = rpm;
+            this.ice_temp = ice_temp;
+            this.gen_temp = gen_temp;
+            this.fuel_remaining = fuel_remaining;
+            this.cooler = cooler;
+            this.starter = starter;
+            this.throttle = throttle;
+            this.vsi_temp = vsi_temp;
+            this.rpm_alt = rpm_alt;
+            this.ice_temp_alt = ice_temp_alt;
+            
+        }
+        
+        /// packet xml order
+        public static mavlink_gen_status_t PopulateXMLOrder(float charge_current,uint rpm,float ice_temp,float gen_temp,byte fuel_remaining,byte cooler,byte starter,byte throttle,float vsi_temp,uint rpm_alt,float ice_temp_alt) 
+        {
+            var msg = new mavlink_gen_status_t();
+
+            msg.charge_current = charge_current;
+            msg.rpm = rpm;
+            msg.ice_temp = ice_temp;
+            msg.gen_temp = gen_temp;
+            msg.fuel_remaining = fuel_remaining;
+            msg.cooler = cooler;
+            msg.starter = starter;
+            msg.throttle = throttle;
+            msg.vsi_temp = vsi_temp;
+            msg.rpm_alt = rpm_alt;
+            msg.ice_temp_alt = ice_temp_alt;
+            
+            return msg;
+        }
+        
+
+        /// <summary>Charge current  [A] </summary>
+        [Units("[A]")]
+        [Description("Charge current")]
+        //[FieldOffset(0)]
+        public  float charge_current;
+
+        /// <summary>RPM  [rpm] </summary>
+        [Units("[rpm]")]
+        [Description("RPM")]
+        //[FieldOffset(4)]
+        public  uint rpm;
+
+        /// <summary>Engine temperature  [degC] </summary>
+        [Units("[degC]")]
+        [Description("Engine temperature")]
+        //[FieldOffset(8)]
+        public  float ice_temp;
+
+        /// <summary>Motor temperature  [degC] </summary>
+        [Units("[degC]")]
+        [Description("Motor temperature")]
+        //[FieldOffset(12)]
+        public  float gen_temp;
+
+        /// <summary>Fuel remaining  [%] </summary>
+        [Units("[%]")]
+        [Description("Fuel remaining")]
+        //[FieldOffset(16)]
+        public  byte fuel_remaining;
+
+        /// <summary>Cooler  [%] </summary>
+        [Units("[%]")]
+        [Description("Cooler")]
+        //[FieldOffset(17)]
+        public  byte cooler;
+
+        /// <summary>Starter  [%] </summary>
+        [Units("[%]")]
+        [Description("Starter")]
+        //[FieldOffset(18)]
+        public  byte starter;
+
+        /// <summary>Throttle  [%] </summary>
+        [Units("[%]")]
+        [Description("Throttle")]
+        //[FieldOffset(19)]
+        public  byte throttle;
+
+        /// <summary>Inverter temperature  [degC] </summary>
+        [Units("[degC]")]
+        [Description("Inverter temperature")]
+        //[FieldOffset(20)]
+        public  float vsi_temp;
+
+        /// <summary>RPM alternate  [rpm] </summary>
+        [Units("[rpm]")]
+        [Description("RPM alternate")]
+        //[FieldOffset(24)]
+        public  uint rpm_alt;
+
+        /// <summary>Engine temperature alternate  [degC] </summary>
+        [Units("[degC]")]
+        [Description("Engine temperature alternate")]
+        //[FieldOffset(28)]
+        public  float ice_temp_alt;
     };
 
     
