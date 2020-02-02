@@ -250,6 +250,40 @@ namespace MissionPlanner
         [DisplayText("AOA (deg)")]
         public float AOA { get; set; }
 
+        [DisplayText("Charge current (amps)")]
+        [GroupText("Generator")]
+        public float charge_current { get; set; }
+        [DisplayText("Genset RPM")]
+        [GroupText("Generator")]
+        public uint gen_rpm { get; set; }
+        [DisplayText("ICE temperature")]
+        [GroupText("Generator")]
+        public float ice_temp { get; set; }
+        [DisplayText("Gen temperature")]
+        [GroupText("Generator")]
+        public float gen_temp { get; set; }
+        [DisplayText("VSI temperature")]
+        [GroupText("Generator")]
+        public float vsi_temp { get; set; }
+        [DisplayText("Fuel level")]
+        [GroupText("Generator")]
+        public uint fuel { get; set; }
+        [DisplayText("Cooler")]
+        [GroupText("Generator")]
+        public uint cooler_pct { get; set; }
+        [DisplayText("Starter")]
+        [GroupText("Generator")]
+        public uint starter_pct { get; set; }
+        [DisplayText("Throttle")]
+        [GroupText("Generator")]
+        public uint throttle_pct { get; set; }
+        [DisplayText("RPM alternate")]
+        [GroupText("Generator")]
+        public uint gen_rpm_alt { get; set; }
+        [DisplayText("ICE temperature alternate")]
+        [GroupText("Generator")]
+        public float ice_temp_alt { get; set; }
+
         [GroupText("Position")]
         [DisplayText("GroundCourse (deg)")]
         public float groundcourse
@@ -2960,6 +2994,25 @@ namespace MissionPlanner
 
                             }
 
+                    }
+                        break;
+
+                    case (uint) MAVLink.MAVLINK_MSG_ID.GEN_STATUS:
+
+                    {
+                        var gen_status = mavLinkMessage.ToStructure<MAVLink.mavlink_gen_status_t>();
+
+                        charge_current = gen_status.charge_current;
+                        gen_rpm = gen_status.rpm;
+                        ice_temp = gen_status.ice_temp;
+                        gen_temp = gen_status.gen_temp;
+                        vsi_temp = gen_status.vsi_temp;
+                        fuel = gen_status.fuel_remaining;
+                        cooler_pct = gen_status.cooler;
+                        starter_pct = gen_status.starter;
+                        throttle_pct = gen_status.throttle;
+                        gen_rpm_alt = gen_status.rpm_alt;
+                        ice_temp_alt = gen_status.ice_temp_alt;
                     }
                         break;
                 }
