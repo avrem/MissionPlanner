@@ -13,13 +13,15 @@ namespace MissionPlanner.Maps
 
         float heading = 0;
         private float target = 0;
+        float gps_yaw = 0;
 
-        public GMapMarkerAntennaTracker(PointLatLng p, float heading, float target)
+        public GMapMarkerAntennaTracker(PointLatLng p, float heading, float target, float gps_yaw)
             : base(p)
         {
             Size = icon.Size;
             this.heading = heading;
             this.target = target;
+            this.gps_yaw = gps_yaw;
         }
 
         public override void OnRender(IGraphics g)
@@ -38,6 +40,11 @@ namespace MissionPlanner.Maps
                 // target
                 g.DrawLine(new Pen(Color.Orange, 2), 0.0f, 0.0f, (float) Math.Cos((target - 90)*MathHelper.deg2rad)*length,
                     (float) Math.Sin((target - 90)*MathHelper.deg2rad)*length);
+
+                // gps_yaw
+                if (gps_yaw > 0)
+                    g.DrawLine(new Pen(Color.Blue, 2), 0.0f, 0.0f, (float) Math.Cos((gps_yaw - 90)*MathHelper.deg2rad)*length,
+                        (float) Math.Sin((gps_yaw - 90)*MathHelper.deg2rad)*length);
             }
             catch
             {

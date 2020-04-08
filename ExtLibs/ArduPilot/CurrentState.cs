@@ -298,6 +298,10 @@ namespace MissionPlanner
             }
         }
 
+        [DisplayText("GPS Yaw")]
+        [GroupText("Position")]
+        public ushort gpsyaw { get; set; }
+
         // position
         [DisplayText("Latitude (dd)")]
         [GroupText("Position")]
@@ -417,6 +421,10 @@ namespace MissionPlanner
         [DisplayText("GroundCourse2 (deg)")]
         [GroupText("Position")]
         public float groundcourse2 { get; set; }
+
+        [DisplayText("GPS Yaw2")]
+        [GroupText("Position")]
+        public ushort gpsyaw2 { get; set; }
 
         [DisplayText("Sat Count Blend")]
         [GroupText("Position")]
@@ -1227,6 +1235,18 @@ namespace MissionPlanner
 
         [GroupText("Position")] public PointLatLngAlt Location => new PointLatLngAlt(lat, lng, altasl);
         [GroupText("Position")] public PointLatLngAlt TargetLocation { get; set; } = PointLatLngAlt.Zero;
+
+        public float gps_yaw_deg
+        {
+            get
+            {
+                if (gpsyaw2 > 0 && gpsyaw2 < 36000)
+                    return gpsyaw2 * 0.01f;
+                if (gpsyaw > 0 && gpsyaw < 36000)
+                    return gpsyaw * 0.01f;
+                return -1;
+            }
+        }
 
         /*
         public float GeoFenceDist
@@ -2515,6 +2535,8 @@ namespace MissionPlanner
                             gpshdg_acc = -1;
                         }
 
+                        gpsyaw = gps.yaw;
+
                         //MAVLink.packets[(byte)MAVLink.MSG_NAMES.GPS_RAW);
                     }
 
@@ -2535,6 +2557,7 @@ namespace MissionPlanner
 
                         groundspeed2 = gps.vel * 1.0e-2f;
                         groundcourse2 = gps.cog * 1.0e-2f;
+                        gpsyaw2 = gps.yaw;
                     }
 
                         break;

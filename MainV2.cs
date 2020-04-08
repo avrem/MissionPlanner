@@ -3497,6 +3497,7 @@ namespace MissionPlanner
             GMapMarkerBase.DisplayNavBearing = Settings.Instance.GetBoolean("GMapMarkerBase_DisplayNavBearing", true);
             GMapMarkerBase.DisplayRadius = Settings.Instance.GetBoolean("GMapMarkerBase_DisplayRadius", true);
             GMapMarkerBase.DisplayTarget = Settings.Instance.GetBoolean("GMapMarkerBase_DisplayTarget", true);
+            GMapMarkerBase.DisplayGPSYaw = Settings.Instance.GetBoolean("GMapMarkerBase_DisplayHeading", true);
         }
 
         public void LoadGDALImages(object nothing)
