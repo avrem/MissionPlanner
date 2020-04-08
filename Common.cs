@@ -76,7 +76,7 @@ namespace MissionPlanner
             {
                 return (new GMapMarkerPlane(MAV.sysid - 1, portlocation, MAV.cs.yaw,
                     MAV.cs.groundcourse, MAV.cs.nav_bearing, MAV.cs.target_bearing,
-                    MAV.cs.radius * CurrentState.multiplierdist)
+                    MAV.cs.radius * CurrentState.multiplierdist, MAV.cs.gps_yaw_deg)
                 {
                     ToolTipText = ArduPilot.Common.speechConversion(MAV, "" + Settings.Instance["mapicondesc"]),
                     ToolTipMode = String.IsNullOrEmpty(Settings.Instance["mapicondesc"]) ? MarkerTooltipMode.Never : MarkerTooltipMode.Always,
@@ -96,7 +96,7 @@ namespace MissionPlanner
             else if (MAV.aptype == MAVLink.MAV_TYPE.SURFACE_BOAT)
             {
                 return (new GMapMarkerBoat(portlocation, MAV.cs.yaw,
-                    MAV.cs.groundcourse, MAV.cs.nav_bearing, MAV.cs.target_bearing){  Tag = MAV});
+                    MAV.cs.groundcourse, MAV.cs.nav_bearing, MAV.cs.target_bearing, MAV.cs.gps_yaw_deg){  Tag = MAV});
             }
             else if (MAV.aptype == MAVLink.MAV_TYPE.SUBMARINE)
             {
@@ -111,7 +111,7 @@ namespace MissionPlanner
             else if (MAV.cs.firmware == Firmwares.ArduTracker)
             {
                 return (new GMapMarkerAntennaTracker(portlocation, MAV.cs.yaw,
-                    MAV.cs.target_bearing){ Tag = MAV});
+                    MAV.cs.target_bearing, MAV.cs.gps_yaw_deg){ Tag = MAV});
             }
             else if (MAV.aptype == MAVLink.MAV_TYPE.COAXIAL)
             {
