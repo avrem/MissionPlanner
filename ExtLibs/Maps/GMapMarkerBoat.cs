@@ -17,14 +17,16 @@ namespace MissionPlanner.Maps
         float cog = -1;
         float target = -1;
         float nav_bearing = -1;
+        float gps_yaw = -1;
 
-        public GMapMarkerBoat(PointLatLng p, float heading, float cog, float nav_bearing, float target)
+        public GMapMarkerBoat(PointLatLng p, float heading, float cog, float nav_bearing, float target, float gps_yaw)
             : base(p)
         {
             this.heading = heading;
             this.cog = cog;
             this.target = target;
             this.nav_bearing = nav_bearing;
+            this.gps_yaw = gps_yaw;
             Size = SizeSt;
         }
 
@@ -59,6 +61,10 @@ namespace MissionPlanner.Maps
                 g.DrawLine(new Pen(Color.Orange, 2), 0.0f, 0.0f,
                     (float) Math.Cos((target - 90) * MathHelper.deg2rad) * length,
                     (float) Math.Sin((target - 90) * MathHelper.deg2rad) * length);
+            if (DisplayGPSYaw && gps_yaw > 0)
+                g.DrawLine(new Pen(Color.Blue, 2), 0.0f, 0.0f,
+                    (float) Math.Cos((gps_yaw - 90) * MathHelper.deg2rad) * length,
+                    (float) Math.Sin((gps_yaw - 90) * MathHelper.deg2rad) * length);
             // anti NaN
 
             try
