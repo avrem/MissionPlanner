@@ -423,6 +423,10 @@ namespace MissionPlanner
         [GroupText("Position")]
         public float groundcourse2 { get; set; }
 
+        [DisplayText("GPS Yaw2 (deg)")]
+        [GroupText("Position")]
+        public float gpsyaw2 { get; private set; }
+
         [DisplayText("Sat Count Blend")]
         [GroupText("Position")]
         public float satcountB => satcount + satcount2;
@@ -1292,6 +1296,18 @@ namespace MissionPlanner
 
         [GroupText("Position")] public PointLatLngAlt Location => new PointLatLngAlt(lat, lng, altasl);
         [GroupText("Position")] public PointLatLngAlt TargetLocation { get; set; } = PointLatLngAlt.Zero;
+
+        public float gps_yaw_deg
+        {
+            get
+            {
+                if (gpsyaw2 > 0 && gpsyaw2 < 360)
+                    return gpsyaw2;
+                if (gpsyaw > 0 && gpsyaw < 360)
+                    return gpsyaw;
+                return -1;
+            }
+        }
 
         [JsonIgnore] [IgnoreDataMember]
         public float GeoFenceDist
@@ -2881,6 +2897,7 @@ namespace MissionPlanner
 
                             groundspeed2 = gps.vel * 1.0e-2f;
                             groundcourse2 = gps.cog * 1.0e-2f;
+                            gpsyaw2 = gps.yaw / 100.0f;
                         }
 
                         break;
