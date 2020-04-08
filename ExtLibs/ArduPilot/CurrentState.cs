@@ -1332,6 +1332,18 @@ namespace MissionPlanner
         [GroupText("Position")] public PointLatLngAlt Location => new PointLatLngAlt(lat, lng, altasl);
         [GroupText("Position")] public PointLatLngAlt TargetLocation { get; set; } = PointLatLngAlt.Zero;
 
+        public float gps_yaw_deg
+        {
+            get
+            {
+                if (gpsyaw2 > 0 && gpsyaw2 < 360)
+                    return gpsyaw2;
+                if (gpsyaw > 0 && gpsyaw < 360)
+                    return gpsyaw;
+                return -1;
+            }
+        }
+
         [JsonIgnore] [IgnoreDataMember]
         public float GeoFenceDist
         {
