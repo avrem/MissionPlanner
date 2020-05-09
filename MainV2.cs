@@ -4006,6 +4006,8 @@ namespace MissionPlanner
             if (Program.WindowsStoreApp)
                 return;
 
+            return; // no updates for aeroxo-specific builds
+
             try
             {
                 MissionPlanner.Utilities.Update.CheckForUpdate();
