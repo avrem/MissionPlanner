@@ -284,6 +284,11 @@ namespace MissionPlanner
         [GroupText("Generator")]
         public float ice_temp_alt { get; set; }
 
+        public uint foll_state { get; set; }
+        public float foll_x { get; set; }
+        public float foll_y { get; set; }
+        public float foll_z { get; set; }
+
         [GroupText("Position")]
         [DisplayText("GroundCourse (deg)")]
         public float groundcourse
@@ -3036,6 +3041,18 @@ namespace MissionPlanner
                         throttle_pct = gen_status.throttle;
                         gen_rpm_alt = gen_status.rpm_alt;
                         ice_temp_alt = gen_status.ice_temp_alt;
+                    }
+                        break;
+
+                    case (uint) MAVLink.MAVLINK_MSG_ID.FOLLOW_TARGET:
+
+                    {
+                        var follow_target = mavLinkMessage.ToStructure<MAVLink.mavlink_follow_target_t>();
+                        
+                        foll_state = follow_target.est_capabilities;
+                        foll_x = follow_target.vel[0];
+                        foll_y = follow_target.vel[1];
+                        foll_z = follow_target.vel[2];
                     }
                         break;
                 }
