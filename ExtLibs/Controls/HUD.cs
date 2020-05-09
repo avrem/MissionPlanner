@@ -767,6 +767,7 @@ namespace MissionPlanner.Controls
         private Color _hudcolor = Color.White;
         private Pen _whitePen = new Pen(Color.White, 2);
         private readonly SolidBrush _whiteBrush = new SolidBrush(Color.White);
+        private readonly SolidBrush _redBrush = new SolidBrush(Color.Red);
 
         private static readonly SolidBrush SolidBrush = new SolidBrush(Color.FromArgb(0x55, 0xff, 0xff, 0xff));
 
@@ -2621,8 +2622,11 @@ namespace MissionPlanner.Controls
                         }
                         else
                         {
+                            bool fault = double.IsNaN(item.GetValue) ||
+                                (item.Item.Name == "charge_current" && item.GetValue < 1.0) ||
+                                ((item.Item.Name == "gen_rpm" || item.Item.Name == "gen_rpm_alt") && item.GetValue < 500);
                             drawstring(item.Header + item.GetValue.ToString("0.##"), font, fontsize + 2,
-                                _whiteBrush, this.Width / 8, height);
+                                fault ? _redBrush : _whiteBrush, this.Width / 8, height);
                         }
 
                         height -= fontsize + 5;
