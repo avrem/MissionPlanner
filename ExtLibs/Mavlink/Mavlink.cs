@@ -3987,6 +3987,12 @@ public partial class MAVLink
             ///<summary> The aircraft should immediately transition into guided. This should not be set for follow me applications | </summary>
         [Description("The aircraft should immediately transition into guided. This should not be set for follow me applications")]
         CHANGE_MODE=1, 
+        ///<summary> The VTOL aircraft should remain in fixed-wing loiter after reaching target | </summary>
+        [Description("The VTOL aircraft should remain in fixed-wing loiter after reaching target")]
+        VTOL_FORCE_FW=2, 
+        ///<summary> The VTOL aircraft should remain in multicopter loiter after reaching targets | </summary>
+        [Description("The VTOL aircraft should remain in multicopter loiter after reaching targets")]
+        VTOL_FORCE_MC=4, 
     
     };
     

@@ -4114,6 +4114,18 @@
   <data name="goHereToolStripMenuItem.Text" xml:space="preserve">
     <value>Fly To Here</value>
   </data>
+  <data name="planeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="planeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Plane</value>
+  </data>
+  <data name="copterToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="copterToolStripMenuItem.Text" xml:space="preserve">
+    <value>Copter</value>
+  </data>
   <data name="deleteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
@@ -4964,6 +4976,18 @@
     <value>goHereToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;goHereToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;planeToolStripMenuItem.Name" xml:space="preserve">
+    <value>planeToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;planeToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;copterToolStripMenuItem.Name" xml:space="preserve">
+    <value>copterToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;copterToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;addPoiToolStripMenuItem.Name" xml:space="preserve">

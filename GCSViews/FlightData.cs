@@ -2457,6 +2457,28 @@ namespace MissionPlanner.GCSViews
 
         private void goHereToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            flyToHere(fthmode.Default);
+        }
+
+        private void goHerePlaneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            flyToHere(fthmode.Plane);
+        }
+
+        private void goHereCopterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            flyToHere(fthmode.Copter);
+        }
+
+        private enum fthmode
+        {
+            Default,
+            Plane,
+            Copter
+        }
+
+        private void flyToHere(fthmode mode)
+        {
             if (!MainV2.comPort.BaseStream.IsOpen)
             {
                 CustomMessageBox.Show(Strings.PleaseConnect, Strings.ERROR);
@@ -2476,6 +2498,10 @@ namespace MissionPlanner.GCSViews
             try
             {
                 int flags = (int) MAVLink.MAV_DO_REPOSITION_FLAGS.CHANGE_MODE;
+                if (mode == fthmode.Plane)
+                    flags |= (int) MAVLink.MAV_DO_REPOSITION_FLAGS.VTOL_FORCE_FW;
+                else if (mode == fthmode.Copter)
+                    flags |= (int) MAVLink.MAV_DO_REPOSITION_FLAGS.VTOL_FORCE_MC;
                 int lat = (int) (MouseDownStart.Lat * 1e7);
                 int lon = (int) (MouseDownStart.Lng * 1e7);
                 if (MainV2.comPort.doCommandInt((byte) MainV2.comPort.sysidcurrent, (byte) MainV2.comPort.compidcurrent,
