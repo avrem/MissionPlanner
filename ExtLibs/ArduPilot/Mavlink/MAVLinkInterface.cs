@@ -2193,14 +2193,14 @@ Mission Planner waits for 2 valid heartbeat packets before connecting");
             }
         }
 
-        public bool doCommandInt(byte sysid, byte compid, MAV_CMD actionid, float p1, float p2, float p3, float p4,
-            int p5, int p6, int p7, bool requireack = true, Action uicallback = null)
+        public bool doCommandInt(byte sysid, byte compid, MAV_CMD actionid, MAV_FRAME frame, float p1, float p2, float p3, float p4,
+            int p5, int p6, float p7, bool requireack = true, Action uicallback = null)
         {
-            return doCommandIntAsync(sysid, compid, actionid, p1, p2, p3, p4, p5, p6, p7, requireack, uicallback).AwaitSync();
+            return doCommandIntAsync(sysid, compid, actionid, frame, p1, p2, p3, p4, p5, p6, p7, requireack, uicallback).AwaitSync();
         }
 
-        public async Task<bool> doCommandIntAsync(byte sysid, byte compid, MAV_CMD actionid, float p1, float p2, float p3, float p4,
-        int p5, int p6, int p7, bool requireack = true, Action uicallback = null)
+        public async Task<bool> doCommandIntAsync(byte sysid, byte compid, MAV_CMD actionid, MAV_FRAME frame, float p1, float p2, float p3, float p4,
+        int p5, int p6, float p7, bool requireack = true, Action uicallback = null)
         {
             MAVLinkMessage buffer;
 
@@ -2210,6 +2210,7 @@ Mission Planner waits for 2 valid heartbeat packets before connecting");
             req.target_component = compid;
 
             req.command = (ushort)actionid;
+            req.frame = (byte)frame;
 
             req.param1 = p1;
             req.param2 = p2;
