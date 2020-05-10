@@ -2277,7 +2277,7 @@ namespace MissionPlanner.GCSViews
             }
         }
 
-        private void flyToHereAltToolStripMenuItem_Click(object sender, EventArgs e)
+        private float getGuidedAlt()
         {
             string alt = "100";
 
@@ -2294,7 +2294,7 @@ namespace MissionPlanner.GCSViews
                 alt = Settings.Instance["guided_alt"];
 
             if (DialogResult.Cancel == InputBox.Show("Enter Alt", "Enter Guided Mode Alt", ref alt))
-                return;
+                return -1;
 
             Settings.Instance["guided_alt"] = alt;
 
@@ -2302,20 +2302,10 @@ namespace MissionPlanner.GCSViews
             if (!int.TryParse(alt, out intalt))
             {
                 CustomMessageBox.Show("Bad Alt");
-                return;
+                return -1;
             }
 
-            MainV2.comPort.MAV.GuidedMode.z = intalt / CurrentState.multiplieralt;
-
-            if (MainV2.comPort.MAV.cs.mode == "Guided")
-            {
-                MainV2.comPort.setGuidedModeWP(new Locationwp
-                {
-                    alt = MainV2.comPort.MAV.GuidedMode.z,
-                    lat = MainV2.comPort.MAV.GuidedMode.x / 1e7,
-                    lng = MainV2.comPort.MAV.GuidedMode.y / 1e7
-                });
-            }
+            return intalt / CurrentState.multiplieralt;
         }
 
         Color GetColor()
@@ -2473,13 +2463,9 @@ namespace MissionPlanner.GCSViews
                 return;
             }
 
-            if (MainV2.comPort.MAV.GuidedMode.z == 0)
-            {
-                flyToHereAltToolStripMenuItem_Click(null, null);
-
-                if (MainV2.comPort.MAV.GuidedMode.z == 0)
-                    return;
-            }
+            float alt = getGuidedAlt();
+            if (alt <= 0)
+                return;
 
             if (MouseDownStart.Lat == 0 || MouseDownStart.Lng == 0)
             {
@@ -2490,7 +2476,7 @@ namespace MissionPlanner.GCSViews
             Locationwp gotohere = new Locationwp();
 
             gotohere.id = (ushort) MAVLink.MAV_CMD.WAYPOINT;
-            gotohere.alt = MainV2.comPort.MAV.GuidedMode.z; // back to m
+            gotohere.alt = alt; // back to m
             gotohere.lat = (MouseDownStart.Lat);
             gotohere.lng = (MouseDownStart.Lng);
 
@@ -4913,67 +4899,6 @@ namespace MissionPlanner.GCSViews
         private void BUT_land_Click(object sender, EventArgs e)
         {
             MainV2.comPort.setMode("QLAND");
-        }
-
-        private void flyToCoordsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var location = "";
-            InputBox.Show("Enter Fly To Coords", "Please enter the coords 'lat;long;alt' or 'lat;long'", ref location);
-
-            var split = location.Split(';');
-
-            if (split.Length == 3)
-            {
-                var lat = float.Parse(split[0], CultureInfo.InvariantCulture);
-                var lng = float.Parse(split[1], CultureInfo.InvariantCulture);
-                var alt = float.Parse(split[2], CultureInfo.InvariantCulture);
-
-                var plla = new PointLatLngAlt(lat, lng, alt);
-
-                Locationwp gotohere = new Locationwp();
-
-                gotohere.id = (ushort)MAVLink.MAV_CMD.WAYPOINT;
-                gotohere.alt = (float)plla.Alt / CurrentState.multiplieralt; // back to m
-                gotohere.lat = (plla.Lat);
-                gotohere.lng = (plla.Lng);
-
-                try
-                {
-                    MainV2.comPort.setGuidedModeWP(gotohere);
-                }
-                catch (Exception ex)
-                {
-                    CustomMessageBox.Show(Strings.CommandFailed + ex.Message, Strings.ERROR);
-                }
-            }
-            else if (split.Length == 2)
-            {
-                var lat = float.Parse(split[0], CultureInfo.InvariantCulture);
-                var lng = float.Parse(split[1], CultureInfo.InvariantCulture);
-                var alt = srtm.getAltitude(MouseDownStart.Lat, MouseDownStart.Lng).alt / CurrentState.multiplieralt;
-
-                var plla = new PointLatLngAlt(lat, lng, alt);
-
-                Locationwp gotohere = new Locationwp();
-
-                gotohere.id = (ushort)MAVLink.MAV_CMD.WAYPOINT;
-                gotohere.alt = MainV2.comPort.MAV.GuidedMode.z; // back to m
-                gotohere.lat = (plla.Lat);
-                gotohere.lng = (plla.Lng);
-
-                try
-                {
-                    MainV2.comPort.setGuidedModeWP(gotohere);
-                }
-                catch (Exception ex)
-                {
-                    CustomMessageBox.Show(Strings.CommandFailed + ex.Message, Strings.ERROR);
-                }
-            }
-            else
-            {
-                CustomMessageBox.Show(Strings.InvalidField, Strings.ERROR);
-            }
         }
 
         private void poiatcoordsToolStripMenuItem_Click(object sender, EventArgs e)

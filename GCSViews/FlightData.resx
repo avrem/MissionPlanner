@@ -4114,18 +4114,6 @@
   <data name="goHereToolStripMenuItem.Text" xml:space="preserve">
     <value>Fly To Here</value>
   </data>
-  <data name="flyToHereAltToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="flyToHereAltToolStripMenuItem.Text" xml:space="preserve">
-    <value>Fly To Here Alt</value>
-  </data>
-  <data name="flyToCoordsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="flyToCoordsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Fly To Coords</value>
-  </data>
   <data name="deleteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
@@ -4978,12 +4966,6 @@
   <data name="&gt;&gt;goHereToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flyToHereAltToolStripMenuItem.Name" xml:space="preserve">
-    <value>flyToHereAltToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;flyToHereAltToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;addPoiToolStripMenuItem.Name" xml:space="preserve">
     <value>addPoiToolStripMenuItem</value>
   </data>
@@ -5109,12 +5091,6 @@
   </data>
   <data name="&gt;&gt;bindingSourceStatusTab.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flyToCoordsToolStripMenuItem.Name" xml:space="preserve">
-    <value>flyToCoordsToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;flyToCoordsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;poiatcoordsToolStripMenuItem.Name" xml:space="preserve">
     <value>poiatcoordsToolStripMenuItem</value>
