@@ -2473,16 +2473,17 @@ namespace MissionPlanner.GCSViews
                 return;
             }
 
-            Locationwp gotohere = new Locationwp();
-
-            gotohere.id = (ushort) MAVLink.MAV_CMD.WAYPOINT;
-            gotohere.alt = alt; // back to m
-            gotohere.lat = (MouseDownStart.Lat);
-            gotohere.lng = (MouseDownStart.Lng);
-
             try
             {
-                MainV2.comPort.setGuidedModeWP(gotohere);
+                int flags = (int) MAVLink.MAV_DO_REPOSITION_FLAGS.CHANGE_MODE;
+                int lat = (int) (MouseDownStart.Lat * 1e7);
+                int lon = (int) (MouseDownStart.Lng * 1e7);
+                if (MainV2.comPort.doCommandInt((byte) MainV2.comPort.sysidcurrent, (byte) MainV2.comPort.compidcurrent,
+                    MAVLink.MAV_CMD.DO_REPOSITION, MAVLink.MAV_FRAME.GLOBAL_RELATIVE_ALT_INT, -1, flags, 0, 0, lat, lon, alt)) {
+                    MainV2.comPort.MAV.GuidedMode.x = lat;
+                    MainV2.comPort.MAV.GuidedMode.y = lon;
+                    MainV2.comPort.MAV.GuidedMode.z = alt;
+                }
             }
             catch (Exception ex)
             {
