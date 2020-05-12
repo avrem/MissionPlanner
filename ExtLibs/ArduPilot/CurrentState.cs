@@ -1154,6 +1154,10 @@ namespace MissionPlanner
         [GroupText("Battery")] public double battery_cell4 { get; set; }
         [GroupText("Battery")] public double battery_cell5 { get; set; }
         [GroupText("Battery")] public double battery_cell6 { get; set; }
+        [GroupText("Battery")] public double battery_cell7 { get; set; }
+        [GroupText("Battery")] public double battery_cell8 { get; set; }
+        [GroupText("Battery")] public double battery_cell9 { get; set; }
+        [GroupText("Battery")] public double battery_cell10{ get; set; }
 
         [GroupText("Battery")] public double battery_temp { get; set; }
 
@@ -2340,6 +2344,14 @@ namespace MissionPlanner
                                 else battery_cell5 = 0.0;
                                 if (bats.voltages[5] != ushort.MaxValue) battery_cell6 = bats.voltages[5] / 1000.0;
                                 else battery_cell6 = 0.0;
+                                if (bats.voltages[6] != ushort.MaxValue) battery_cell7 = bats.voltages[6] / 1000.0;
+                                else battery_cell7 = 0.0;
+                                if (bats.voltages[7] != ushort.MaxValue) battery_cell8 = bats.voltages[7] / 1000.0;
+                                else battery_cell8 = 0.0;
+                                if (bats.voltages[8] != ushort.MaxValue) battery_cell9 = bats.voltages[8] / 1000.0;
+                                else battery_cell9 = 0.0;
+                                if (bats.voltages[9] != ushort.MaxValue) battery_cell10= bats.voltages[9] / 1000.0;
+                                else battery_cell10= 0.0;
                             }
 
                             battery_usedmah = bats.current_consumed;
