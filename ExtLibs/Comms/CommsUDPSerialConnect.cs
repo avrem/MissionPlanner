@@ -112,7 +112,10 @@ namespace MissionPlanner.Comms
 
             if (IsInRange("224.0.0.0", "239.255.255.255", hostEndPoint.Address.ToString()))
             {
-                client = new UdpClient(int.Parse(Port));
+                client = new UdpClient();
+                client.ExclusiveAddressUse = false;
+                client.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+                client.Client.Bind(new IPEndPoint(IPAddress.Any, int.Parse(Port)));
                 client.JoinMulticastGroup(IPAddress.Parse(host));
             }
             else
