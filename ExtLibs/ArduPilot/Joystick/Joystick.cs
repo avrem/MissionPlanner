@@ -1177,7 +1177,7 @@ namespace MissionPlanner.Joystick
         {
             int min, max, trim = 0;
 
-            if (Interface.MAV.param.Count > 0)
+            if (false && Interface.MAV.param.Count > 0)
             {
                 try
                 {
