@@ -167,7 +167,7 @@ namespace MissionPlanner.Utilities
 
                         using (Tiff tiff = Tiff.Open(geotiffdata.FileName, "r"))
                         {
-                            if (tiff.GetField(TiffTag.TILEWIDTH).Length >= 1)
+                            if (tiff.GetField(TiffTag.TILEWIDTH) != null)
                             {
                                 FieldValue[] value = tiff.GetField(TiffTag.IMAGEWIDTH);
                                 int imageWidth = value[0].ToInt();
