@@ -1697,7 +1697,7 @@ namespace MissionPlanner
 
         private void Parent_OnPacketReceived(object sender, MAVLink.MAVLinkMessage mavLinkMessage)
         {
-            if (mavLinkMessage.sysid == parent.sysid && mavLinkMessage.compid == parent.compid 
+            if (mavLinkMessage.sysid == parent.sysid && (mavLinkMessage.compid == parent.compid || mavLinkMessage.msgid == (uint)MAVLink.MAVLINK_MSG_ID.GEN_STATUS)
                 || mavLinkMessage.msgid == (uint)MAVLink.MAVLINK_MSG_ID.RADIO // propagate the RADIO/RADIO_STATUS message across all devices on this link
                 || mavLinkMessage.msgid == (uint)MAVLink.MAVLINK_MSG_ID.RADIO_STATUS)
             {

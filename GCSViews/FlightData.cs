@@ -4915,12 +4915,12 @@ namespace MissionPlanner.GCSViews
 
         private void BUT_engine_ON_Click(object sender, EventArgs e)
         {
-            MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_ENGINE_CONTROL, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+            MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent, 0, MAVLink.MAV_CMD.DO_ENGINE_CONTROL, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
         }
 
         private void BUT_engine_OFF_Click(object sender, EventArgs e)
         {
-            MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_ENGINE_CONTROL, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+            MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent, 0, MAVLink.MAV_CMD.DO_ENGINE_CONTROL, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
         }
 
         private void BUT_land_Click(object sender, EventArgs e)
