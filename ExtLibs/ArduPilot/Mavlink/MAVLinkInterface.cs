@@ -3563,6 +3563,22 @@ Mission Planner waits for 2 valid heartbeat packets before connecting");
                                     }
                                 }
 
+                                if (fieldValue.GetType() == typeof(ushort[]))
+                                {
+                                    try
+                                    {
+                                        ushort[] crap = (ushort[])fieldValue;
+
+                                        foreach (ushort fiel in crap)
+                                        {
+                                            textoutput = textoutput + Convert.ToString(fiel) + "|";
+                                        }
+                                    }
+                                    catch
+                                    {
+                                    }
+                                }
+
                                 textoutput = textoutput + delimeter;
                             }
                             else
