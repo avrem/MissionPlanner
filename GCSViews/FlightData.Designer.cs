@@ -190,6 +190,7 @@ namespace MissionPlanner.GCSViews
             this.goHereToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.landToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addPoiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -2433,7 +2434,8 @@ namespace MissionPlanner.GCSViews
             // 
             this.goHereToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.planeToolStripMenuItem,
-            this.copterToolStripMenuItem});
+            this.copterToolStripMenuItem,
+            this.landToolStripMenuItem});
             this.goHereToolStripMenuItem.Name = "goHereToolStripMenuItem";
             resources.ApplyResources(this.goHereToolStripMenuItem, "goHereToolStripMenuItem");
             this.goHereToolStripMenuItem.Click += new System.EventHandler(this.goHereToolStripMenuItem_Click);
@@ -2449,6 +2451,12 @@ namespace MissionPlanner.GCSViews
             this.copterToolStripMenuItem.Name = "copterToolStripMenuItem";
             resources.ApplyResources(this.copterToolStripMenuItem, "copterToolStripMenuItem");
             this.copterToolStripMenuItem.Click += new System.EventHandler(this.goHereCopterToolStripMenuItem_Click);
+            // 
+            // landToolStripMenuItem
+            // 
+            this.landToolStripMenuItem.Name = "landToolStripMenuItem";
+            resources.ApplyResources(this.landToolStripMenuItem, "landToolStripMenuItem");
+            this.landToolStripMenuItem.Click += new System.EventHandler(this.goHereLandToolStripMenuItem_Click);
             // 
             // addPoiToolStripMenuItem
             // 
@@ -2862,6 +2870,7 @@ namespace MissionPlanner.GCSViews
         private System.Windows.Forms.ToolStripMenuItem goHereToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem planeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem landToolStripMenuItem;
         private Controls.HUD hud1;
         private Controls.MyButton BUT_clear_track;
         private System.Windows.Forms.CheckBox CB_tuning;
