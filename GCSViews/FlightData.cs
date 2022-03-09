@@ -2607,6 +2607,11 @@ namespace MissionPlanner.GCSViews
             flyToHere(fthmode.Copter);
         }
 
+        private void goHereLandToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            landHere();
+        }
+
         private enum fthmode
         {
             Default,
@@ -2646,6 +2651,38 @@ namespace MissionPlanner.GCSViews
                     MainV2.comPort.MAV.GuidedMode.x = lat;
                     MainV2.comPort.MAV.GuidedMode.y = lon;
                     MainV2.comPort.MAV.GuidedMode.z = alt;
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.Show(Strings.CommandFailed + ex.Message, Strings.ERROR);
+            }
+        }
+
+        private void landHere()
+        {
+            if (!MainV2.comPort.BaseStream.IsOpen)
+            {
+                CustomMessageBox.Show(Strings.PleaseConnect, Strings.ERROR);
+                return;
+            }
+
+            if (MouseDownStart.Lat == 0.0 || MouseDownStart.Lng == 0.0)
+            {
+                CustomMessageBox.Show(Strings.BadCoords, Strings.ERROR);
+                return;
+            }
+
+            try
+            {
+                int lat = (int)(MouseDownStart.Lat * 1e7);
+                int lon = (int)(MouseDownStart.Lng * 1e7);
+                if (MainV2.comPort.doCommandInt((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent,
+                    MAVLink.MAV_CMD.VTOL_LAND, 0, 0, float.NaN, float.NaN, lat, lon, float.NaN, frame: MAVLink.MAV_FRAME.GLOBAL_RELATIVE_ALT_INT))
+                {
+                    MainV2.comPort.MAV.GuidedMode.x = lat;
+                    MainV2.comPort.MAV.GuidedMode.y = lon;
+                    MainV2.comPort.MAV.GuidedMode.z = 0;
                 }
             }
             catch (Exception ex)
