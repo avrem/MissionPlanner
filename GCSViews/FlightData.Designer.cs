@@ -47,6 +47,8 @@ namespace MissionPlanner.GCSViews
             this.quickView1 = new MissionPlanner.Controls.QuickView();
             this.tabActions = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.BUT_engine_ON = new MissionPlanner.Controls.MyButton();
+            this.BUT_engine_OFF = new MissionPlanner.Controls.MyButton();
             this.BUT_abortland = new MissionPlanner.Controls.MyButton();
             this.modifyandSetLoiterRad = new MissionPlanner.Controls.ModifyandSet();
             this.BUT_clear_track = new MissionPlanner.Controls.MyButton();
@@ -715,6 +717,8 @@ namespace MissionPlanner.GCSViews
             this.tableLayoutPanel1.Controls.Add(this.CMB_modes, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.BUT_quickauto, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.BUT_setmode, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.BUT_engine_ON, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.BUT_engine_OFF, 1, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // BUT_abortland
@@ -937,6 +941,26 @@ namespace MissionPlanner.GCSViews
             this.CMB_mountmode.DropDownWidth = 150;
             this.CMB_mountmode.FormattingEnabled = true;
             this.CMB_mountmode.Name = "CMB_mountmode";
+            // 
+            // BUT_engine_ON
+            // 
+            this.BUT_engine_ON.ColorMouseDown = System.Drawing.Color.Empty;
+            this.BUT_engine_ON.ColorMouseOver = System.Drawing.Color.Empty;
+            this.BUT_engine_ON.ColorNotEnabled = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.BUT_engine_ON, "BUT_engine_ON");
+            this.BUT_engine_ON.Name = "BUT_engine_ON";
+            this.BUT_engine_ON.UseVisualStyleBackColor = true;
+            this.BUT_engine_ON.Click += new System.EventHandler(this.BUT_engine_ON_Click);
+            // 
+            // BUT_engine_OFF
+            // 
+            this.BUT_engine_OFF.ColorMouseDown = System.Drawing.Color.Empty;
+            this.BUT_engine_OFF.ColorMouseOver = System.Drawing.Color.Empty;
+            this.BUT_engine_OFF.ColorNotEnabled = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.BUT_engine_OFF, "BUT_engine_OFF");
+            this.BUT_engine_OFF.Name = "BUT_engine_OFF";
+            this.BUT_engine_OFF.UseVisualStyleBackColor = true;
+            this.BUT_engine_OFF.Click += new System.EventHandler(this.BUT_engine_OFF_Click);
             // 
             // BUT_quickrtl
             // 
@@ -2901,6 +2925,8 @@ namespace MissionPlanner.GCSViews
         private Controls.MyButton BUT_georefimage;
         private Controls.QuickView quickView6;
         private Controls.QuickView quickView5;
+        private Controls.MyButton BUT_engine_ON;
+        private Controls.MyButton BUT_engine_OFF;
         private System.Windows.Forms.ToolStripMenuItem poiatcoordsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem flyToCoordsToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
