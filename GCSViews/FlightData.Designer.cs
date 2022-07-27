@@ -51,6 +51,7 @@ namespace MissionPlanner.GCSViews
             this.BUT_SendMSG = new MissionPlanner.Controls.MyButton();
             this.BUT_engine_ON = new MissionPlanner.Controls.MyButton();
             this.BUT_engine_OFF = new MissionPlanner.Controls.MyButton();
+            this.BUT_land = new MissionPlanner.Controls.MyButton();
             this.BUT_abortland = new MissionPlanner.Controls.MyButton();
             this.modifyandSetLoiterRad = new MissionPlanner.Controls.ModifyandSet();
             this.BUT_clear_track = new MissionPlanner.Controls.MyButton();
@@ -721,7 +722,6 @@ namespace MissionPlanner.GCSViews
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.BUT_SendMSG, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.BUT_abortland, 4, 4);
             this.tableLayoutPanel1.Controls.Add(this.modifyandSetLoiterRad, 4, 2);
             this.tableLayoutPanel1.Controls.Add(this.BUT_clear_track, 4, 3);
@@ -746,6 +746,7 @@ namespace MissionPlanner.GCSViews
             this.tableLayoutPanel1.Controls.Add(this.BUT_setmode, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.BUT_engine_ON, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.BUT_engine_OFF, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.BUT_land, 2, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // BUT_SendMSG
@@ -999,6 +1000,16 @@ namespace MissionPlanner.GCSViews
             this.BUT_engine_OFF.Name = "BUT_engine_OFF";
             this.BUT_engine_OFF.UseVisualStyleBackColor = true;
             this.BUT_engine_OFF.Click += new System.EventHandler(this.BUT_engine_OFF_Click);
+            // 
+            // BUT_land
+            // 
+            this.BUT_land.ColorMouseDown = System.Drawing.Color.Empty;
+            this.BUT_land.ColorMouseOver = System.Drawing.Color.Empty;
+            this.BUT_land.ColorNotEnabled = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.BUT_land, "BUT_land");
+            this.BUT_land.Name = "BUT_land";
+            this.BUT_land.UseVisualStyleBackColor = true;
+            this.BUT_land.Click += new System.EventHandler(this.BUT_land_Click);
             // 
             // BUT_quickrtl
             // 
@@ -3013,6 +3024,7 @@ namespace MissionPlanner.GCSViews
         private Controls.QuickView quickView5;
         private Controls.MyButton BUT_engine_ON;
         private Controls.MyButton BUT_engine_OFF;
+        private Controls.MyButton BUT_land;
         private System.Windows.Forms.ToolStripMenuItem poiatcoordsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem flyToCoordsToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
