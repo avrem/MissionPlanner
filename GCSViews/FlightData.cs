@@ -5682,6 +5682,11 @@ namespace MissionPlanner.GCSViews
             MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent, 0, MAVLink.MAV_CMD.DO_ENGINE_CONTROL, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
         }
 
+        private void BUT_land_Click(object sender, EventArgs e)
+        {
+            MainV2.comPort.setMode("QLAND");
+        }
+
         private void flyToCoordsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var location = "";
