@@ -6250,4 +6250,34 @@
   <data name="&gt;&gt;BUT_engine_OFF.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="BUT_land.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="BUT_land.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BUT_land.Location" type="System.Drawing.Point, System.Drawing">
+    <value>410, 79</value>
+  </data>
+  <data name="BUT_land.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 30</value>
+  </data>
+  <data name="BUT_land.TabIndex" type="System.Int32, mscorlib">
+    <value>103</value>
+  </data>
+  <data name="BUT_land.Text" xml:space="preserve">
+    <value>QLand</value>
+  </data>
+  <data name="&gt;&gt;BUT_land.Name" xml:space="preserve">
+    <value>BUT_land</value>
+  </data>
+  <data name="&gt;&gt;BUT_land.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BUT_land.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;BUT_land.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
 </root>
