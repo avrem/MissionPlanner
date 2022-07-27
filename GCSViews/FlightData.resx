@@ -6178,4 +6178,64 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.MyUserControl, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="BUT_engine_ON.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="BUT_engine_ON.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BUT_engine_ON.Location" type="System.Drawing.Point, System.Drawing">
+    <value>410, 7</value>
+  </data>
+  <data name="BUT_engine_ON.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 30</value>
+  </data>
+  <data name="BUT_engine_ON.TabIndex" type="System.Int32, mscorlib">
+    <value>101</value>
+  </data>
+  <data name="BUT_engine_ON.Text" xml:space="preserve">
+    <value>ENG ON</value>
+  </data>
+  <data name="&gt;&gt;BUT_engine_ON.Name" xml:space="preserve">
+    <value>BUT_engine_ON</value>
+  </data>
+  <data name="&gt;&gt;BUT_engine_ON.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BUT_engine_ON.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;BUT_engine_ON.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="BUT_engine_OFF.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="BUT_engine_OFF.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BUT_engine_OFF.Location" type="System.Drawing.Point, System.Drawing">
+    <value>410, 43</value>
+  </data>
+  <data name="BUT_engine_OFF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 30</value>
+  </data>
+  <data name="BUT_engine_OFF.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="BUT_engine_OFF.Text" xml:space="preserve">
+    <value>ENG OFF</value>
+  </data>
+  <data name="&gt;&gt;BUT_engine_OFF.Name" xml:space="preserve">
+    <value>BUT_engine_OFF</value>
+  </data>
+  <data name="&gt;&gt;BUT_engine_OFF.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BUT_engine_OFF.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;BUT_engine_OFF.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
 </root>
