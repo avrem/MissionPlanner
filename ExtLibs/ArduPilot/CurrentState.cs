@@ -86,7 +86,7 @@ namespace MissionPlanner
         internal bool batterymonitoring = false;
 
         // current firmware
-        public Firmwares firmware = Firmwares.ArduCopter2;
+        public Firmwares firmware = Firmwares.ArduPlane;
         private bool gotwind;
 
         // HIL
