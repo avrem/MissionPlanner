@@ -3266,7 +3266,7 @@ namespace MissionPlanner
 
             ThreadPool.QueueUserWorkItem(BGLoadAirports);
 
-            ThreadPool.QueueUserWorkItem(BGCreateMaps);
+            //ThreadPool.QueueUserWorkItem(BGCreateMaps);
 
             //ThreadPool.QueueUserWorkItem(BGGetAlmanac);
 
