@@ -93,7 +93,7 @@ namespace MissionPlanner
             else if (MAV.aptype == MAVLink.MAV_TYPE.SURFACE_BOAT)
             {
                 return (new GMapMarkerBoat(portlocation, MAV.cs.yaw,
-                    MAV.cs.groundcourse, MAV.cs.nav_bearing, MAV.cs.target_bearing){  Tag = MAV});
+                    MAV.cs.groundcourse, MAV.cs.nav_bearing, MAV.cs.target_bearing, MAV.cs.gps_yaw_deg){  Tag = MAV});
             }
             else if (MAV.aptype == MAVLink.MAV_TYPE.SUBMARINE)
             {
