@@ -988,6 +988,12 @@ namespace MissionPlanner.GCSViews
                 var isitarmed = MainV2.comPort.MAV.cs.armed;
                 var action = MainV2.comPort.MAV.cs.armed ? "Disarm" : "Arm";
 
+                if (!isitarmed && !checkListControl1.Passing())
+                    if (CustomMessageBox.Show("Preflight checklist not checked, are you sure you want to " + action, action,
+                            CustomMessageBox.MessageBoxButtons.YesNo) !=
+                        CustomMessageBox.DialogResult.Yes)
+                        return;
+
                 if (isitarmed)
                     if (CustomMessageBox.Show("Are you sure you want to " + action, action,
                             CustomMessageBox.MessageBoxButtons.YesNo) !=
