@@ -70,8 +70,10 @@ namespace MissionPlanner.Controls.PreFlight
             panel1.Visible = true;
         }
 
-        void UpdateDisplay()
+        bool UpdateDisplay()
         {
+            bool pass = true;
+
             foreach (Control itemp in panel1.Controls)
             {
                 foreach (Control item in itemp.Controls)
@@ -101,10 +103,19 @@ namespace MissionPlanner.Controls.PreFlight
                         {
                             data.text.ForeColor = data.CLItem._FalseColor;
                             data.desc.ForeColor = data.CLItem._FalseColor;
+                            pass = false;
                         }
                     }
                 }
             }
+
+            return pass;
+        }
+
+        public bool Passing()
+        {
+            Draw();
+            return UpdateDisplay();
         }
 
         Control addwarningcontrol(int x, int y, CheckListItem item, bool hideforchild = false)
