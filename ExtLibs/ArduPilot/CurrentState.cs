@@ -2713,6 +2713,7 @@ namespace MissionPlanner
 
                             load = sysstatus.load / 10.0f;
 
+                            battery_voltage = sysstatus.voltage_battery / 1000.0f;
                             battery_remaining = sysstatus.battery_remaining;
                             current = sysstatus.current_battery / 100.0f;
 
@@ -2835,6 +2836,7 @@ namespace MissionPlanner
 
                         {
                             var bat = mavLinkMessage.ToStructure<MAVLink.mavlink_battery2_t>();
+                            _battery_voltage2 = bat.voltage / 1000.0f;
                             current2 = bat.current_battery / 100.0f;
                         }
 
@@ -2843,11 +2845,6 @@ namespace MissionPlanner
 
                         {
                             var bats = mavLinkMessage.ToStructure<MAVLink.mavlink_battery_status_t>();
-
-                            // Compute the total battery system voltage by adding up all the individual cells
-                            // This is used due to the 65.536V max. voltage limitation of sysstatus.battery_voltage and battery_status.voltage
-                            // This is available even if the montior type doesn't support cell monitoring
-                            double temp_battery_voltage = bats.voltages.Sum(a => a != ushort.MaxValue ? a / 1000.0 : 0) + bats.voltages_ext.Sum(a => a != ushort.MaxValue ? a / 1000.0 : 0);
 
                             if (bats.id == 0)
                             {
@@ -2884,7 +2881,6 @@ namespace MissionPlanner
 
                                 battery_usedmah = bats.current_consumed;
                                 battery_remaining = bats.battery_remaining;
-                                battery_voltage = temp_battery_voltage;
                                 _current = bats.current_battery / 100.0f;
                                 if (bats.temperature != short.MaxValue)
                                     battery_temp = bats.temperature / 100.0;
@@ -2894,7 +2890,6 @@ namespace MissionPlanner
                             {
                                 battery_usedmah2 = bats.current_consumed;
                                 battery_remaining2 = bats.battery_remaining;
-                                battery_voltage2 = temp_battery_voltage;
                                 _current2 = bats.current_battery / 100.0f;
                                 if (bats.temperature != short.MaxValue)
                                     battery_temp2 = bats.temperature / 100.0;
@@ -2904,7 +2899,7 @@ namespace MissionPlanner
                             {
                                 battery_usedmah3 = bats.current_consumed;
                                 battery_remaining3 = bats.battery_remaining;
-                                battery_voltage3 = temp_battery_voltage;
+                                battery_voltage3 = bats.voltages.Sum(a => a != ushort.MaxValue ? a / 1000.0 : 0);
                                 current3 = bats.current_battery / 100.0f;
                                 if (bats.temperature != short.MaxValue)
                                     battery_temp3 = bats.temperature / 100.0;
@@ -2914,7 +2909,7 @@ namespace MissionPlanner
                             {
                                 battery_usedmah4 = bats.current_consumed;
                                 battery_remaining4 = bats.battery_remaining;
-                                battery_voltage4 = temp_battery_voltage;
+                                battery_voltage4 = bats.voltages.Sum(a => a != ushort.MaxValue ? a / 1000.0 : 0);
                                 current4 = bats.current_battery / 100.0f;
                                 if (bats.temperature != short.MaxValue)
                                     battery_temp4 = bats.temperature / 100.0;
@@ -2924,7 +2919,7 @@ namespace MissionPlanner
                             {
                                 battery_usedmah5 = bats.current_consumed;
                                 battery_remaining5 = bats.battery_remaining;
-                                battery_voltage5 = temp_battery_voltage;
+                                battery_voltage5 = bats.voltages.Sum(a => a != ushort.MaxValue ? a / 1000.0 : 0);
                                 current5 = bats.current_battery / 100.0f;
                                 if (bats.temperature != short.MaxValue)
                                     battery_temp5 = bats.temperature / 100.0;
@@ -2934,7 +2929,7 @@ namespace MissionPlanner
                             {
                                 battery_usedmah6 = bats.current_consumed;
                                 battery_remaining6 = bats.battery_remaining;
-                                battery_voltage6 = temp_battery_voltage;
+                                battery_voltage6 = bats.voltages.Sum(a => a != ushort.MaxValue ? a / 1000.0 : 0);
                                 current6 = bats.current_battery / 100.0f;
                                 if (bats.temperature != short.MaxValue)
                                     battery_temp6 = bats.temperature / 100.0;
@@ -2944,7 +2939,7 @@ namespace MissionPlanner
                             {
                                 battery_usedmah7 = bats.current_consumed;
                                 battery_remaining7 = bats.battery_remaining;
-                                battery_voltage7 = temp_battery_voltage;
+                                battery_voltage7 = bats.voltages.Sum(a => a != ushort.MaxValue ? a / 1000.0 : 0);
                                 current7 = bats.current_battery / 100.0f;
                                 if (bats.temperature != short.MaxValue)
                                     battery_temp7 = bats.temperature / 100.0;
@@ -2954,7 +2949,7 @@ namespace MissionPlanner
                             {
                                 battery_usedmah8 = bats.current_consumed;
                                 battery_remaining8 = bats.battery_remaining;
-                                battery_voltage8 = temp_battery_voltage;
+                                battery_voltage8 = bats.voltages.Sum(a => a != ushort.MaxValue ? a / 1000.0 : 0);
                                 current8 = bats.current_battery / 100.0f;
                                 if (bats.temperature != short.MaxValue)
                                     battery_temp8 = bats.temperature / 100.0;
@@ -2964,7 +2959,7 @@ namespace MissionPlanner
                             {
                                 battery_usedmah9 = bats.current_consumed;
                                 battery_remaining9 = bats.battery_remaining;
-                                battery_voltage9 = temp_battery_voltage;
+                                battery_voltage9 = bats.voltages.Sum(a => a != ushort.MaxValue ? a / 1000.0 : 0);
                                 current9 = bats.current_battery / 100.0f;
                                 if (bats.temperature != short.MaxValue)
                                     battery_temp9 = bats.temperature / 100.0;
