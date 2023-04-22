@@ -1200,7 +1200,8 @@ namespace MissionPlanner
             set
             {
                 _battery_remaining = value;
-                if (_battery_remaining < 0 || _battery_remaining > 100) _battery_remaining = 0;
+                if (_battery_remaining < 0) _battery_remaining = 0;
+                else if (_battery_remaining > 100) _battery_remaining = 100;
             }
         }
 
