@@ -1185,10 +1185,6 @@ namespace MissionPlanner
 
         private void but_disablearmswitch_Click(object sender, EventArgs e)
         {
-            if (CustomMessageBox.Show("Are you sure?", "", MessageBoxButtons.YesNo) == (int)DialogResult.Yes)
-                MainV2.comPort.setMode(
-                    new MAVLink.mavlink_set_mode_t() { custom_mode = (MainV2.comPort.MAV.cs.sensors_enabled.motor_control == true && MainV2.comPort.MAV.cs.sensors_enabled.seen) ? 1u : 0u },
-                    MAVLink.MAV_MODE_FLAG.SAFETY_ARMED);
         }
 
         private void but_hwids_Click(object sender, EventArgs e)
@@ -1303,13 +1299,6 @@ namespace MissionPlanner
 
         private void but_lockup_Click(object sender, EventArgs e)
         {
-            if (CustomMessageBox.Show("Lockup the autopilot??? this can cause a CRASH!!!!!!",
-                    "Lockup", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == (int)DialogResult.Yes)
-                if (CustomMessageBox.Show("Lockup the autopilot??? this can cause a CRASH!!!!!!",
-                        "Lockup", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == (int)DialogResult.Yes)
-                    MainV2.comPort.doCommand(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
-                        MAVLink.MAV_CMD.PREFLIGHT_REBOOT_SHUTDOWN,
-                        42, 24, 71, 93, 0, 0, 0, false);
         }
 
         private void but_hexmavlink_Click(object sender, EventArgs e)
