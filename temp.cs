@@ -1493,5 +1493,14 @@ namespace MissionPlanner
                 CustomMessageBox.Show(ex.ToString(), Strings.ERROR);
             }
         }
+
+        private void but_forcedisarm_Click(object sender, EventArgs e)
+        {
+            if (CustomMessageBox.Show("Force disarm??? this can cause a CRASH!!!!!!",
+                    "Force disarm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == (int)DialogResult.Yes)
+                if (CustomMessageBox.Show("Force disarm??? this can cause a CRASH!!!!!!",
+                        "Force disarm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == (int)DialogResult.Yes)
+                    MainV2.comPort.doARM(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid, false, true);
+        }
     }
 }

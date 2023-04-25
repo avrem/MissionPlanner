@@ -152,6 +152,8 @@
             this.BUT_forcecal_accel = new MissionPlanner.Controls.MyButton();
             this.label57 = new System.Windows.Forms.Label();
             this.label58 = new System.Windows.Forms.Label();
+            this.but_forcedisarm = new MissionPlanner.Controls.MyButton();
+            this.label59 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -280,6 +282,8 @@
             this.tableLayoutPanel1.Controls.Add(this.label56, 3, 30);
             this.tableLayoutPanel1.Controls.Add(this.label57, 1, 30);
             this.tableLayoutPanel1.Controls.Add(this.label58, 1, 31);
+            this.tableLayoutPanel1.Controls.Add(this.but_forcedisarm, 2, 31);
+            this.tableLayoutPanel1.Controls.Add(this.label59, 3, 31);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // but_apjtool
@@ -1017,6 +1021,18 @@
             resources.ApplyResources(this.label58, "label58");
             this.label58.Name = "label58";
             // 
+            // but_forcedisarm
+            // 
+            resources.ApplyResources(this.but_forcedisarm, "but_forcedisarm");
+            this.but_forcedisarm.Name = "but_forcedisarm";
+            this.but_forcedisarm.UseVisualStyleBackColor = true;
+            this.but_forcedisarm.Click += new System.EventHandler(this.but_forcedisarm_Click);
+            // 
+            // label59
+            // 
+            resources.ApplyResources(this.label59, "label59");
+            this.label59.Name = "label59";
+            // 
             // temp
             // 
             resources.ApplyResources(this, "$this");
@@ -1158,5 +1174,7 @@
         private Controls.MyButton BUT_forcecal_mag;
         private System.Windows.Forms.Label label57;
         private System.Windows.Forms.Label label58;
+        private Controls.MyButton but_forcedisarm;
+        private System.Windows.Forms.Label label59;
     }
 }
