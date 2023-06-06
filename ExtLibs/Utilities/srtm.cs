@@ -383,7 +383,7 @@ namespace MissionPlanner.Utilities
                 }
                 else // get something
                 {
-                    if(lat >= 61) // srtm data only goes to 60N
+                    if(lat >= 85)
                         return altresponce.Invalid;
 
                     if (zoom >= 7)
