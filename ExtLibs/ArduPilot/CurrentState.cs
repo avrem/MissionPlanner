@@ -1807,6 +1807,7 @@ namespace MissionPlanner
 
         // pressure
         [GroupText("Sensor")] public float press_abs { get; set; }
+        [GroupText("Sensor")] public float press_diff { get; set; }
         [GroupText("Sensor")] public int press_temp { get; set; }
         [GroupText("Sensor")] public float press_abs2 { get; set; }
         [GroupText("Sensor")] public int press_temp2 { get; set; }
@@ -2950,6 +2951,7 @@ namespace MissionPlanner
                             var pres = mavLinkMessage.ToStructure<MAVLink.mavlink_scaled_pressure_t>();
                             press_abs = pres.press_abs;
                             press_temp = pres.temperature;
+                            press_diff = pres.press_diff * 100;
 
                             airspeed1_temp = pres.temperature_press_diff;
                         }
