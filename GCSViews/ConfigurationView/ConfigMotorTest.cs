@@ -113,6 +113,7 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                         break;
                     case 2:
                     case 5:
+                    case 20:
                         type = MAVLink.MAV_TYPE.HEXAROTOR;
                         break;
                     case 3:
