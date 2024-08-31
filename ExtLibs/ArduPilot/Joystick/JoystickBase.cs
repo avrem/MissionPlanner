@@ -1067,19 +1067,13 @@ namespace MissionPlanner.Joystick
                     {
                         //g.channel_roll.set_pwm(BOOL_TO_SIGN(g.reverse_elevons) * (BOOL_TO_SIGN(g.reverse_ch2_elevon) * int(ch2_temp - elevon2_trim) - BOOL_TO_SIGN(g.reverse_ch1_elevon) * int(ch1_temp - elevon1_trim)) / 2 + 1500);
                         //g.channel_pitch.set_pwm(                                 (BOOL_TO_SIGN(g.reverse_ch2_elevon) * int(ch2_temp - elevon2_trim) + BOOL_TO_SIGN(g.reverse_ch1_elevon) * int(ch1_temp - elevon1_trim)) / 2 + 1500);
-                        short roll = pickchannel(1, JoyChannels[1].axis, false, JoyChannels[1].expo);
-                        short pitch = pickchannel(2, JoyChannels[2].axis, false, JoyChannels[2].expo);
+                        short roll = pickchannel(1, JoyChannels[1].axis, JoyChannels[1].reverse, JoyChannels[1].expo);
+                        short pitch = pickchannel(2, JoyChannels[2].axis, JoyChannels[2].reverse, JoyChannels[2].expo);
 
                         if (getJoystickAxis(1) != joystickaxis.None)
-                            Interface.MAV.cs.rcoverridech1 =
-                                (short)
-                                (BOOL_TO_SIGN(JoyChannels[1].reverse)*((int) (pitch - 1500) - (int) (roll - 1500))/2 +
-                                 1500);
+                            Interface.MAV.cs.rcoverridech1 = (short)((Math.Abs(roll - 1500) < 30) ? 0 : roll);
                         if (getJoystickAxis(2) != joystickaxis.None)
-                            Interface.MAV.cs.rcoverridech2 =
-                                (short)
-                                (BOOL_TO_SIGN(JoyChannels[2].reverse)*((int) (pitch - 1500) + (int) (roll - 1500))/2 +
-                                 1500);
+                            Interface.MAV.cs.rcoverridech2 = (short)((Math.Abs(pitch - 1500) < 30) ? 0 : pitch);
                     }
                     else
                     {

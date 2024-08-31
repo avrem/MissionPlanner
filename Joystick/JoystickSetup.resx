@@ -310,7 +310,7 @@
     <value>32</value>
   </data>
   <data name="CHK_elevons.Text" xml:space="preserve">
-    <value>Elevons</value>
+    <value>Tether</value>
   </data>
   <data name="&gt;&gt;CHK_elevons.Name" xml:space="preserve">
     <value>CHK_elevons</value>
